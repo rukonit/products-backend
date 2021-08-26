@@ -1,6 +1,7 @@
 package com.rukon.services.impl;
 
-import com.rukon.model.Product;
+import com.rukon.models.P;
+import com.rukon.models.Product;
 import com.rukon.services.ProductService;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -21,6 +22,12 @@ public class ProductServiceImpl implements ProductService<Product> {
     public Collection<Product> findAll() {
         return productRepository.findAll();
     }
+
+    @Override
+    public Collection<P> findAllProducts() {
+        return productRepository.findAllProduct();
+    }
+
 
     @Override
     public Optional<Product> findById(Long id) {
