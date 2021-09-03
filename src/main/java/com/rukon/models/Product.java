@@ -49,7 +49,6 @@ public class Product {
     @Column(name="stock")
     private int stock;
 
-
     @ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "products")
     private Set<Cart> carts = new HashSet<Cart>();
 

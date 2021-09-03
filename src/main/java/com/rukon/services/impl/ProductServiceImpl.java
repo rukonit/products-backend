@@ -1,6 +1,6 @@
 package com.rukon.services.impl;
 
-import com.rukon.models.P;
+import com.rukon.dto.ProductDto;
 import com.rukon.models.Product;
 import com.rukon.services.ProductService;
 import org.codehaus.jettison.json.JSONException;
@@ -24,7 +24,7 @@ public class ProductServiceImpl implements ProductService<Product> {
     }
 
     @Override
-    public Collection<P> findAllProducts() {
+    public Collection<ProductDto> findAllProducts() {
         return productRepository.findAllProduct();
     }
 

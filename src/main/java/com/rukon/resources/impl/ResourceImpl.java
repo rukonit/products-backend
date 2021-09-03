@@ -1,6 +1,6 @@
 package com.rukon.resources.impl;
 
-import com.rukon.models.P;
+import com.rukon.dto.ProductDto;
 import com.rukon.models.Product;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class ResourceImpl implements Resource<Product> {
         return new ResponseEntity<>(productService.findAll(), HttpStatus.OK) ;
     }
     @GetMapping("/justproducts")
-    public ResponseEntity<Collection<P>> findAllProduct() {
+    public ResponseEntity<Collection<ProductDto>> findAllProduct() {
         return new ResponseEntity<>(productService.findAllProducts(), HttpStatus.OK);
     }
 
