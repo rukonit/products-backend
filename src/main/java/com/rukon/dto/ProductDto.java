@@ -16,5 +16,4 @@ public class ProductDto {
     private float price;
     private int stock;
 
-
 }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-public interface Resource<T> {
+public interface ProductResource<T> {
     @GetMapping
     ResponseEntity<Collection<T>> findAll();
 

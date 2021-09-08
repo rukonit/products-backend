@@ -1,7 +1,9 @@
 package com.rukon;
 
+import com.rukon.dto.UserDto;
 import com.rukon.models.Cart;
 import com.rukon.models.Product;
+import com.rukon.models.User;
 import com.rukon.repository.CartRepository;
 import com.rukon.repository.ProductRepository;
 import com.rukon.repository.UserRepository;
@@ -29,6 +31,7 @@ public class ProductManagementMain implements CommandLineRunner {
 
 	@Autowired
 	private CartService<Cart> cartService;
+
 
 
 	@Autowired
@@ -76,7 +79,8 @@ public class ProductManagementMain implements CommandLineRunner {
 //
 //		System.out.println(productRepository.findById((long) 138));
 
-		System.out.println(productRepository.findAllProduct());
+//		System.out.println(productRepository.findAllProduct());
+		System.out.println(userRepository.findAll());
 
 	}
 }

@@ -1,5 +1,7 @@
 package com.rukon.services;
 
+import com.rukon.dto.UserDto;
+
 import java.util.Collection;
 import java.util.Optional;
 
@@ -12,4 +14,5 @@ public interface UserService<T> {
     T saveOrUpdate(T t);
 
     String deleteById(Long id);
+
 }
