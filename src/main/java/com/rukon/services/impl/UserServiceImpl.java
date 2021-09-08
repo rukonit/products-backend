@@ -36,5 +36,10 @@ public class UserServiceImpl implements UserService<User> {
         return null;
     }
 
+    @Override
+    public UserDto findAUser(String userName) {
+        return userRepository.findAUser(userName);
+    }
+
 
 }

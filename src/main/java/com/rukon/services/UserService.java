@@ -15,4 +15,5 @@ public interface UserService<T> {
 
     String deleteById(Long id);
 
+    UserDto findAUser(String userName);
 }
