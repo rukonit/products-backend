@@ -1,6 +1,7 @@
 package com.rukon.services.impl;
 
 import com.rukon.dto.UserDto;
+import com.rukon.dto.UserDto2;
 import com.rukon.models.User;
 import com.rukon.repository.UserRepository;
 import com.rukon.services.UserService;
@@ -38,8 +39,13 @@ public class UserServiceImpl implements UserService<User> {
 
     @Override
     public UserDto findAUser(String userName) {
-        return userRepository.findAUser(userName);
+        return null;
     }
+
+//    @Override
+//    public UserDto2 findAUser(String userName) {
+//        return userRepository.findAuser(userName);
+//    }
 
 
 }

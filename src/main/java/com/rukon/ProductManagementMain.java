@@ -80,7 +80,7 @@ public class ProductManagementMain implements CommandLineRunner {
 //		System.out.println(productRepository.findById((long) 138));
 
 //		System.out.println(productRepository.findAllProduct());
-		System.out.println(userRepository.findAll());
+		System.out.println(userRepository.findAll().get(0).getUserName());
 
 	}
 }

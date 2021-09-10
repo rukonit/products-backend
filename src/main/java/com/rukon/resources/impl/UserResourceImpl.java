@@ -37,9 +37,14 @@ public class UserResourceImpl implements UserResouces {
     }
 
     @GetMapping("auser")
+    @Transactional
     public ResponseEntity<UserDto> findById(@RequestParam String userName) {
-        System.out.println(userName);
-        return new ResponseEntity(userService.findAUser(userName), HttpStatus.OK);
+        long id = 149;
+        Optional<User> user = userService.findbyId(id);
+        UserDto userDto = new UserDto();
+        userDto.setUserName(user.get().getUserName());
+        userDto.setCart(user.get().getCart());
+        return new ResponseEntity(userDto, HttpStatus.OK);
     }
 
 
