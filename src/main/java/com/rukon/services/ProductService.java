@@ -1,6 +1,7 @@
 package com.rukon.services;
 
 import com.rukon.dto.ProductDto;
+import com.rukon.models.Product;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -10,7 +11,7 @@ public interface ProductService<T> {
 
     Collection<ProductDto> findAllProducts();
 
-    Optional<T> findById(Long id);
+    Optional<Product> findById(Long id);
 
     T saveOrUpdate(T t);
 

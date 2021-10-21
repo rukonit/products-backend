@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
 
-                .antMatchers("/products").hasRole("ADMIN")
+                .antMatchers("/products").permitAll()
 
                 .and().httpBasic().realmName("spring-app").and()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
