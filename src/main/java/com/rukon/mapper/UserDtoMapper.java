@@ -7,10 +7,10 @@ import org.mapstruct.Mapping;
 
 import java.util.Set;
 
-@Mapper(componentModel = "spring", uses = {User.class})
+//@Mapper(componentModel = "spring", uses = {User.class})
 public interface UserDtoMapper {
-    UserDto map(User user);
-    Set<UserDto> map(Set<User> user);
+//    UserDto map(User user);
+//    Set<UserDto> map(Set<User> user);
 
 
 }

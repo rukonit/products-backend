@@ -51,4 +51,5 @@ import java.util.Set;
             inverseJoinColumns = @JoinColumn(name = "cart_id", referencedColumnName = "id"))
     private Set<Cart> carts = new HashSet<Cart>();
 
+
 }

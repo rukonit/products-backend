@@ -25,7 +25,7 @@ public class ProductServiceImpl implements ProductService<Product> {
 
     @Override
     public Collection<ProductDto> findAllProducts() {
-        return productRepository.findAllProduct();
+        return null;
     }
 
 

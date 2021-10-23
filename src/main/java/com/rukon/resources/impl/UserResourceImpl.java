@@ -1,7 +1,7 @@
 package com.rukon.resources.impl;
 
 import com.rukon.dto.UserDto;
-import com.rukon.mapper.UserDtoMapper;
+
 import com.rukon.models.Cart;
 import com.rukon.models.Product;
 import com.rukon.models.User;
@@ -26,8 +26,8 @@ public class UserResourceImpl implements UserResouces {
     @Autowired
     private UserService<User> userService;
 
-    @Autowired
-    private UserDtoMapper userDtoMapper;
+//    @Autowired
+//    private UserDtoMapper userDtoMapper;
 
     @Autowired
     private CartService cartService;
@@ -52,7 +52,7 @@ public class UserResourceImpl implements UserResouces {
     public ResponseEntity<UserDto> findById(@RequestParam String userName) {
         long id = 149;
 
-        return new ResponseEntity(userService.findbyUserName(userName).map(userDtoMapper::map).orElseThrow(), HttpStatus.OK);
+        return new ResponseEntity(userService.findbyUserName(userName).orElseThrow(), HttpStatus.OK);
     }
 
 //    @PostMapping("addProductToCart")
