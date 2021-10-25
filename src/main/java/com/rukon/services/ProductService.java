@@ -1,19 +1,17 @@
 package com.rukon.services;
 
 import com.rukon.dto.ProductDto;
-import com.rukon.models.Product;
 
 import java.util.Collection;
-import java.util.Optional;
 
-public interface ProductService<T> {
-    Collection<T> findAll();
+public interface ProductService {
 
-    Collection<ProductDto> findAllProducts();
+    Collection<ProductDto> findAll();
 
-    Optional<Product> findById(Long id);
 
-    T saveOrUpdate(T t);
+    ProductDto findById(Long id);
+
+    ProductDto saveOrUpdate(ProductDto productDto);
 
     String deleteById(Long id);
 }

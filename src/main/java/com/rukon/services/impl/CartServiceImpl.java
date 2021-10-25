@@ -1,6 +1,6 @@
 package com.rukon.services.impl;
 
-import com.rukon.models.Cart;
+import com.rukon.model.Cart;
 import com.rukon.repository.CartRepository;
 import com.rukon.services.CartService;
 import org.codehaus.jettison.json.JSONException;

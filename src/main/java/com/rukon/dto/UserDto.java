@@ -1,6 +1,6 @@
 package com.rukon.dto;
 
-import com.rukon.models.Cart;
+import com.rukon.model.Cart;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

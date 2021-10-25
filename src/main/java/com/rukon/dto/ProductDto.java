@@ -15,5 +15,4 @@ public class ProductDto {
     private String category;
     private float price;
     private int stock;
-
 }

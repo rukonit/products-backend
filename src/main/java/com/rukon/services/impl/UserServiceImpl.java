@@ -1,7 +1,6 @@
 package com.rukon.services.impl;
 
-import com.rukon.dto.UserDto;
-import com.rukon.models.User;
+import com.rukon.model.User;
 import com.rukon.repository.UserRepository;
 import com.rukon.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.rukon.authentication;
 
-import com.rukon.models.User;
+import com.rukon.model.User;
 import com.rukon.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
