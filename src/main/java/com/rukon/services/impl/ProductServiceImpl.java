@@ -1,5 +1,6 @@
 package com.rukon.services.impl;
 
+import com.rukon.dto.Message;
 import com.rukon.dto.ProductDto;
 import com.rukon.exception.ResourceNotFoundException;
 import com.rukon.model.Product;
@@ -25,6 +26,16 @@ public class ProductServiceImpl implements ProductService{
     private ModelMapper modelMapper;
 
     @Override
+    public ProductDto createProduct(ProductDto productDto) {
+
+        Product product = mapToEntity(productDto);
+
+        Product newProduct = productRepository.save(product);
+
+        return mapToDto(newProduct);
+    }
+
+    @Override
     public Collection<ProductDto> findAll() {
         List<Product> products = productRepository.findAll();
 
@@ -43,26 +54,27 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public ProductDto saveOrUpdate(ProductDto productDto) {
+    public ProductDto saveOrUpdate(ProductDto productDto, long id) {
 
-        Product product = mapToEntity(productDto);
+        Product product = productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("product", "id", id));
 
-        Product newProduct = productRepository.saveAndFlush(product);
+        product.setName(productDto.getName());
+        product.setDescription(productDto.getDescription());
+        product.setCategory(productDto.getCategory());
+        product.setPrice(productDto.getPrice());
+        product.setStock(productDto.getStock());
 
-        return mapToDto(newProduct);
+        Product updatedProduct = productRepository.saveAndFlush(product);
+
+        return mapToDto(updatedProduct);
     }
 
     @Override
-    public String deleteById(Long id) {
-        JSONObject jsonObject = new JSONObject();
-        try {
-            productRepository.deleteById(id);
-            jsonObject.put("message", "Product deleted successfully");
-            }
-        catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return jsonObject.toString();
+    public void deleteById(Long id) {
+        Product product = productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("product", "id", id));
+
+        productRepository.deleteById(id);
+
     }
 
     private ProductDto mapToDto(Product product) {
