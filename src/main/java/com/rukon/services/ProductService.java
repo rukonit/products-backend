@@ -1,8 +1,6 @@
 package com.rukon.services;
 
-import com.rukon.dto.ProductDto;
-import com.rukon.model.Product;
-import org.codehaus.jettison.json.JSONException;
+import com.rukon.dto.product.ProductDto;
 
 import java.util.Collection;
 

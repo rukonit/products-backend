@@ -1,7 +1,7 @@
 package com.rukon.controller;
 
 import com.rukon.dto.Message;
-import com.rukon.dto.ProductDto;
+import com.rukon.dto.product.ProductDto;
 import com.rukon.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.List;
 
 @Controller
 @RequestMapping
@@ -40,7 +39,7 @@ public class ProductController {
     }
 
     @DeleteMapping(value = "/api/v1/products/{id}")
-    private  ResponseEntity<Message> delteById(@PathVariable(name = "id") long id){
+    private  ResponseEntity<Message> deleteById(@PathVariable(name = "id") long id){
         productService.deleteById(id);
         return ResponseEntity.ok(new Message("Successfully deleted the product"));
     }

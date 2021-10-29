@@ -1,16 +1,15 @@
 package com.rukon.services.impl;
 
-import com.rukon.dto.Message;
-import com.rukon.dto.ProductDto;
+import com.rukon.dto.product.ProductDto;
 import com.rukon.exception.ResourceNotFoundException;
-import com.rukon.model.Product;
+import com.rukon.model.product.Category;
+import com.rukon.model.product.Product;
+import com.rukon.services.ProductCategoryService;
 import com.rukon.services.ProductService;
-import org.codehaus.jettison.json.JSONException;
-import org.codehaus.jettison.json.JSONObject;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.rukon.repository.ProductRepository;
+import com.rukon.repository.product.ProductRepository;
 
 import java.util.Collection;
 import java.util.List;
@@ -23,12 +22,16 @@ public class ProductServiceImpl implements ProductService{
     private ProductRepository productRepository;
 
     @Autowired
+    private ProductCategoryService productCategoryService;
+
+    @Autowired
     private ModelMapper modelMapper;
 
     @Override
     public ProductDto createProduct(ProductDto productDto) {
 
         Product product = mapToEntity(productDto);
+
 
         Product newProduct = productRepository.save(product);
 
@@ -39,28 +42,29 @@ public class ProductServiceImpl implements ProductService{
     public Collection<ProductDto> findAll() {
         List<Product> products = productRepository.findAll();
 
-        List<ProductDto> productDtos = products.stream().map(
+        List<ProductDto> productDts = products.stream().map(
                 post -> mapToDto(post)
         ).collect(Collectors.toList());
 
-        return productDtos;
+        return productDts;
     }
 
     @Override
     public ProductDto findById(Long id) {
         Product product = productRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("product", "id", id));
-        ProductDto productDto = mapToDto(product);
-        return productDto;
+        ProductDto productResponse = mapToDto(product);
+        return productResponse;
     }
 
     @Override
     public ProductDto saveOrUpdate(ProductDto productDto, long id) {
 
         Product product = productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("product", "id", id));
+        Category category = productCategoryService.findByCategory(productDto.getCategory());
 
         product.setName(productDto.getName());
         product.setDescription(productDto.getDescription());
-        product.setCategory(productDto.getCategory());
+        product.setCategory(category);
         product.setPrice(productDto.getPrice());
         product.setStock(productDto.getStock());
 
@@ -80,12 +84,20 @@ public class ProductServiceImpl implements ProductService{
     private ProductDto mapToDto(Product product) {
         ProductDto productDto = new ProductDto();
         modelMapper.map(product, productDto);
+        productDto.setCategory(product.getCategory().getCategory());
         return productDto;
     }
 
+
+
     private Product mapToEntity(ProductDto productDto) {
+
+        Category category = productCategoryService.findByCategory(productDto.getCategory());
         Product product = new Product();
+
         modelMapper.map(productDto, product);
+
+
         return product;
     }
 }

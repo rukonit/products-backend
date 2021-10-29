@@ -1,7 +1,7 @@
-package com.rukon.repository;
+package com.rukon.repository.product;
 
 
-import com.rukon.model.Product;
+import com.rukon.model.product.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,5 +1,6 @@
-package com.rukon.dto;
+package com.rukon.dto.product;
 
+import com.rukon.model.product.Category;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,5 +1,6 @@
-package com.rukon.model;
+package com.rukon.model.product;
 
+import com.rukon.model.Cart;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,8 +29,9 @@ import java.util.Set;
     private String description;
 
     @NotNull
-    @Column(name="category")
-    private String category;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private Category category;
 
     @NotNull
     @Column(name = "price")
