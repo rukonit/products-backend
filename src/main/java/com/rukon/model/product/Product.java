@@ -29,7 +29,7 @@ import java.util.Set;
     private String description;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
 
@@ -41,11 +41,11 @@ import java.util.Set;
     @Column(name="stock")
     private int stock;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "product_cart",
-            joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "cart_id", referencedColumnName = "id"))
-    private Set<Cart> carts = new HashSet<Cart>();
+//    @ManyToMany(cascade = CascadeType.PERSIST)
+//    @JoinTable(name = "product_cart",
+//            joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"),
+//            inverseJoinColumns = @JoinColumn(name = "cart_id", referencedColumnName = "id"))
+//    private Set<Cart> carts = new HashSet<Cart>();
 
 
 }
