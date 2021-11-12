@@ -1,7 +1,10 @@
 package com.rukon.model;
 
 import ch.qos.logback.classic.db.names.ColumnName;
+import com.rukon.dto.CartDto;
+import com.rukon.dto.product.SideDto;
 import com.rukon.model.product.Product;
+import com.rukon.model.product.Side;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,6 +16,7 @@ import org.springframework.boot.web.embedded.undertow.UndertowServletWebServer;
 
 import javax.naming.Name;
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data
@@ -35,5 +39,8 @@ import javax.persistence.*;
     @ManyToOne()
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
+
+    @ElementCollection
+    private Set<SideDto> side;
 
 }

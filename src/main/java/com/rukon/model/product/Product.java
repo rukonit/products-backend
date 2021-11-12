@@ -5,6 +5,7 @@ import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -40,6 +41,10 @@ import java.util.Set;
     @NotNull
     @Column(name="stock")
     private int stock;
+
+
+    @OneToMany(mappedBy = "id")
+    private Set<Side> side;
 
 //    @ManyToMany(cascade = CascadeType.PERSIST)
 //    @JoinTable(name = "product_cart",

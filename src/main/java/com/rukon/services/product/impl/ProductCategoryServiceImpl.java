@@ -1,10 +1,10 @@
-package com.rukon.services.impl;
+package com.rukon.services.product.impl;
 
 import com.rukon.dto.product.CategoryDto;
 import com.rukon.exception.ResourceNotFoundException;
 import com.rukon.model.product.Category;
 import com.rukon.repository.product.CategoryRepository;
-import com.rukon.services.ProductCategoryService;
+import com.rukon.services.product.ProductCategoryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

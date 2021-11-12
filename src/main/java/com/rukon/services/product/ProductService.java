@@ -1,6 +1,8 @@
-package com.rukon.services;
+package com.rukon.services.product;
 
 import com.rukon.dto.product.ProductDto;
+import com.rukon.dto.product.SideDto;
+import com.rukon.model.product.Side;
 
 import java.util.Collection;
 
@@ -14,4 +16,6 @@ public interface ProductService {
     ProductDto saveOrUpdate(ProductDto productDto, long id);
 
     void deleteById(Long id);
+
+
 }

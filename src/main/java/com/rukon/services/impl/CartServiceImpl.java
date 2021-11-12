@@ -40,14 +40,19 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public CartDto saveOrUpdate(CartRequest cartRequest, long id) {
-
-        Cart cart = cartRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("cart", "id", id));
-        
+    public CartDto saveOrUpdate(CartRequest cartRequest, Long id) {
+        User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("user", "id", id));
+        Product product = productRepository.findById(cartRequest.getProductId()).orElseThrow(()-> new ResourceNotFoundException("product", "id", cartRequest.getProductId()));
+        Cart cart = cartRepository.getById(cartRequest.getId());
+        cart.setProduct(product);
+        cart.setQuantity(cartRequest.getQuantity());
+        cart.setUser(user);
+        cart.setSide(cartRequest.getSide());
         Cart updatedCart = cartRepository.saveAndFlush(cart);
-
         return mapToDto(updatedCart);
+
     }
+
 
     @Override
     public void deleteById(Long id) {
@@ -63,6 +68,7 @@ public class CartServiceImpl implements CartService {
         cart.setProduct(product);
         cart.setQuantity(cartRequest.getQuantity());
         cart.setUser(user);
+        cart.setSide(cartRequest.getSide());
         Cart newCart = cartRepository.save(cart);
         return mapToDto(newCart);
     }
@@ -91,7 +97,7 @@ public class CartServiceImpl implements CartService {
     private Cart mapToEntity(CartDto cartDto) {
         Cart cart = new Cart();
 
-        cart.setProduct(cartDto.getProduct());
+        cart.setProduct(productRepository.getById(cartDto.getProduct().getProduct_id()));
         cart.setQuantity(cartDto.getQuantity());
         User user = userRepository.findById((long)cartDto.getUserId()).orElseThrow(() -> new ResourceNotFoundException("user", "id", cartDto.getUserId()));
         cart.setUser(user);

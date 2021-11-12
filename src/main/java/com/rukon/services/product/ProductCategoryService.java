@@ -1,4 +1,4 @@
-package com.rukon.services;
+package com.rukon.services.product;
 
 import com.rukon.dto.product.CategoryDto;
 import com.rukon.model.product.Category;

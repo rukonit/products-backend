@@ -2,8 +2,7 @@ package com.rukon.controller;
 
 import com.rukon.dto.Message;
 import com.rukon.dto.product.CategoryDto;
-import com.rukon.services.ProductCategoryService;
-import com.rukon.services.ProductService;
+import com.rukon.services.product.ProductCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
