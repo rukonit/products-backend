@@ -40,11 +40,10 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public CartDto saveOrUpdate(CartDto cartDto, long id) {
+    public CartDto saveOrUpdate(CartRequest cartRequest, long id) {
 
         Cart cart = cartRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("cart", "id", id));
-        cart.setProduct(cartDto.getProduct());
-        cart.setQuantity(cartDto.getQuantity());
+        
         Cart updatedCart = cartRepository.saveAndFlush(cart);
 
         return mapToDto(updatedCart);

@@ -3,6 +3,7 @@ package com.rukon.services;
 import com.rukon.dto.CartDto;
 import com.rukon.dto.CartRequest;
 import com.rukon.dto.product.ProductDto;
+import com.rukon.model.Cart;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -12,7 +13,7 @@ public interface CartService {
 
     CartDto findbyId(Long Id);
 
-    CartDto saveOrUpdate(CartDto cartDto, long id);
+    CartRequest saveOrUpdate(CartRequest cartRequest, Long id);
 
     void deleteById(Long id);
 
